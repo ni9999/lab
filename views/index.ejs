@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>teacher</title>
+</head>
+
+<body>
+
+	<!-- Form to handle single file download request-->
+	<% for (var i = 0; i<5; i++) {%>
+	<form action="/download" method="get">
+		<button type="submit">Download report</button>
+	</form>
+	<% } %>
+	<br><br>
+	<p> <%= hudai %> </p>
+</body>
+
+</html>
+
+
