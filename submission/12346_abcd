@@ -1,0 +1,45 @@
+#include<iostream>
+#include<vector>
+#include<algorithm>
+using namespace std;
+
+void solve() 
+{
+    int n;
+    cin >> n;
+    vector <int> x (n);
+    for (int i = 0; i < n; i++)
+        cin >> x[i];
+
+    if(n == 1) 
+    {
+        cout << -1 << endl;
+        return;
+    }
+
+    vector <int> ans = x;
+    sort(ans.begin(), ans.end());
+
+    for(int i = 0; i < n; i++)
+    {
+        if(ans[i] == x[i])
+        {
+            if(i == n-1) swap(ans[i-1], ans[i]);
+            else swap(ans[i], ans[i+1]);
+        }
+    }
+    
+    for (int i = 0; i < n; i++)
+        cout << ans[i] << " ";
+    
+    cout << endl;
+    
+}
+
+int main()
+{
+	int t;
+	cin >> t;
+	while (t--)
+		solve();
+}

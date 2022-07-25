@@ -1,0 +1,65 @@
+#include<iostream>
+#include<map>
+using namespace std;
+
+void solve() 
+{
+    int n, m, k, st_a = 0, st_b = 0;
+    cin >> n >> m >> k;
+    string a, b, ans = "";
+    cin >> a >> b;
+
+    map<char, int> amap, bmap;
+    for(int i = 0; i < n; i++)
+        amap[a[i]] ++;
+    for(int i = 0; i < m; i++)
+        bmap[b[i]] ++;
+    
+    char x = amap.begin();
+    char y = bmap.begin();
+    
+    while(!(a == "" || b == ""))
+    {
+        if(x->first < y->first)
+        {
+            st_b = 0;
+            if(st_a <= k)
+            {
+                st_a ++;
+                amap[x] --;
+                ans.push_back(x);
+            }
+            else
+            {
+                bmap[y] --;
+                ans.push_back(y);
+                st_a = 0;
+            }
+        }
+
+        else
+        {
+            st_a = 0;
+            if(st_b <= k)
+            {
+                st_b ++;
+                bmap[y] --;
+                ans.push_back(y);
+            }
+            else
+            {
+                amap[x] --;
+                ans.push_back(x);
+                st_b = 0;
+            }
+        }
+    }
+}
+
+int main()
+{
+	int t;
+	cin >> t;
+	while (t--)
+		solve();
+}

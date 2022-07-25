@@ -1,0 +1,37 @@
+#include<iostream>
+using namespace std;
+
+void solve() 
+{
+    long long int x, ans = 1;
+    cin >> x;
+
+    int tmp_and = x;
+    while(tmp_and % 2 != 1)
+    {
+        tmp_and /= 2;
+        ans *= 2;
+    }
+
+    if (tmp_and <= 1)
+    {
+        int tmp_xor = 1;
+        while (x % 2 != 0)
+        {
+            tmp_xor *= 2;
+            x /= 2;
+        }
+
+        ans += tmp_xor;
+    }
+    
+    cout << ans << endl;
+}
+
+int main()
+{
+	int t;
+	cin >> t;
+	while (t--)
+		solve();
+}

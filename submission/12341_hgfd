@@ -1,0 +1,32 @@
+#include <iostream>
+using namespace std;
+
+void solve()
+{
+    int n;
+    cin >> n;
+    int h1, h2, h3, rem;
+    rem = n % 3;
+
+    h1 = h2 = h3 = n / 3;
+    h1++;
+    h3--;
+
+    if (rem)
+    {
+        h1++;
+        rem--;
+    }
+    if (rem)
+        h2++;
+
+    cout << h2 << " " << h1 << " " << h3 << endl;
+}
+
+int main()
+{
+    int t;
+    cin >> t;
+    while (t--)
+        solve();
+}
