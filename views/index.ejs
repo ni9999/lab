@@ -1,67 +1,55 @@
 <!DOCTYPE html>
 <html>
-
-<head>
-	<title>teacher</title>
-</head>
-
-<body>
-
-	
-
-			<br> <br>
-
-
-			<table class="table">
-				<thead>
-					<tr>
-						<th>Id</th>
-						<th>Name</th>
-						<th>Submission_time</th>
-						<th>Download</th>
-						<th>Obtained_marks</th>
-					</tr>
-				</thead>
-				<tbody>
-					<% for(var i=0; i < students.length; i++) { %>
-						<% var path = "/download/" + students[i].submit_id %>
-						<% var marksAction = "/givemarks/" + students[i].id %>
-						<% var flag = students[i].obtained_marks %>
-						<tr>
-							<td>
-								<%= students[i].id %>
-							</td>
-							<td>
-								<%= students[i].name %>
-							</td>
-							<td>
-								<%= students[i].submission_time %>
-							</td>
-							<td>
-								
-								<!-- Form to handle single file download request-->
-								<form action= "<%= path %>"  method="get">
-									<button type="submit">Download report</button>
-								</form>			
-
-							</td>
-							<td>
-								<!-- form to give marks and show marks if marks were given -->
-								<% if(!flag) { flag = 1; %>
-									<form action = "<%= marksAction %>" method="post">
-										<input type = "number" id = "marks" name = "marks"></input>
-										<button type = "submit"> Give marks </button>
-									</form>
-								<% } else { %>
-									<%= students[i].obtained_marks %>
-								<% } %>
-							</td>
-						</tr>
-
-						<% } %>
-				</tbody>
-			</table>
-
-</body>
-
+   <head>
+      <title>teacher</title>
+   </head>
+   <body>
+      <br> <br>
+      <table class="table">
+         <thead>
+            <tr>
+               <th>Id</th>
+               <th>Name</th>
+               <th>Submission_time</th>
+               <th>Download</th>
+               <th>Obtained_marks</th>
+            </tr>
+         </thead>
+         <tbody>
+            <% for(var i=0; i < students.length; i++) { %>
+            <% var path = "/download/" + students[i].submit_id %>
+            <% var marksAction = "/givemarks/" + students[i].id %>
+            <% var flag = students[i].obtained_marks %>
+            <tr>
+               <td>
+                  <%= students[i].id %>
+               </td>
+               <td>
+                  <%= students[i].name %>
+               </td>
+               <td>
+                  <%= students[i].submission_time %>
+               </td>
+               <td>
+                  <!-- Form to handle single file download request-->
+                  <form action= "<%= path %>"  method="get">
+                     <button type="submit">Download report</button>
+                  </form>
+               </td>
+               <td>
+                  <!-- form to give marks and show marks if marks were given -->
+                  <% if(!flag) { flag = 1; %>
+                  <form action = "<%= marksAction %>" method="post">
+                     <input type = "number" id = "marks" name = "marks"></input>
+                     <button type = "submit"> Give marks </button>
+                  </form>
+                  <% } else { %>
+                  <%= students[i].obtained_marks %>
+                  <% } %>
+               </td>
+            </tr>
+            <% } %>
+         </tbody>
+      </table>
+   </body>
 </html>
