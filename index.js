@@ -42,23 +42,6 @@ connection.connect((err) => {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // set up
 
 var bodyParser = require("body-parser");
@@ -71,19 +54,9 @@ var app = express();
 
 const port = process.env.PORT || 3000
 
-
 app.listen(3000, () => {
 	console.log("listening port 3306");
 });
-
-
-
-
-
-
-
-
-
 
 
 
@@ -99,32 +72,16 @@ app.get("/teacher", function (req, res) {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
 // teacher side
 
 // set the view engine to ejs
 app.set('view engine', 'ejs');
 
-// well. that was disgusting. res.render("pathname", data) here filename(of the ejs file that i am rendering the data) should be index(probably for one is mandatory). and path should be ./views. and shouldn't write full path.
-// also we have to pass and show together
 // use res.render to load up an ejs view file + passing data to ejs
 
 connection.query("USE students");
 
-
 var informations;
-
-
 
 app.post("/teacher", (bodyParser.urlencoded({ extended: false })), (req, res) => {
 	var teacherpassword = "123";
@@ -140,20 +97,6 @@ app.post("/teacher", (bodyParser.urlencoded({ extended: false })), (req, res) =>
 		});
 	}
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -199,21 +142,6 @@ app.post("/uploadfile", (req, res) => {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // teacher side 
 
 //download file 
@@ -228,11 +156,6 @@ app.get("/download/:filename", (req, res) => {
 });
 
 
-
-
-
-
-
 //giving marks
 app.post("/givemarks/:submit", bodyParser.urlencoded({ extended: false }), (req, res) => {
 
@@ -244,7 +167,6 @@ app.post("/givemarks/:submit", bodyParser.urlencoded({ extended: false }), (req,
 	});
 
 	//redirecting to page to view updates
-	//res.render("index", { students: informations });
 	res.redirect("back");
 });
 
