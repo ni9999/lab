@@ -4,7 +4,7 @@ A simple report taking and marking website for teachers and students. Made with 
 
 Firstly mysql and node both runs on localhost. So the port should be different and have to be declared specificly.
 MySql by default runs in 3306 port. Port for node can be anything. So <br />
-in node ------------------- listen port 3000 (Let)
+in node ------------------- listen port 3000 (Let) <br />
 in mysql ------------------ port : 3306
 
 
